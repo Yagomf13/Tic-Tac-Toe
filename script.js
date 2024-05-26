@@ -11,7 +11,7 @@ const jugadores = [
     },
     {
         nombre: jugador2,
-        numero: 2
+        numero: 4
     }
 ];
 
