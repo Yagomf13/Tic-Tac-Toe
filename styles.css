@@ -1,0 +1,41 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 70px;
+    margin: 0px;
+    background-color: antiquewhite;
+    border: 1px solid rgb(255, 196, 119);
+    font-size: 50px;
+}
+
+#start{
+    margin: 0 auto;
+    font-size: 16px;  
+    padding: 30px; 
+}
+
+button:hover {
+    background-color: rgb(255, 228, 192);
+    border: 1px solid rgb(255, 196, 119);
+}
+#container {
+    width: 50%;
+    min-width: 765px;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    overflow: hidden;
+}
+#turno {
+    margin-top: 3%;
+    text-align: center;
+    font-size: 50px;
+}
