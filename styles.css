@@ -78,6 +78,20 @@ html {
     background-color: rgb(0, 0, 0);
     border-color: rgb(41, 26, 109);
 }
+#restartButton{
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 30px; 
+    border-radius: 10px;
+    margin-top: 20px;
+    padding-left: 50vh;
+    padding-right: 50vh;
+    font-size: 35px;
+    font-family:"PT Serif", serif;
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(41, 26, 109);
+    display:none;
+}
 
 .button:hover {
     background-color: rgb(41, 26, 109);
@@ -108,7 +122,7 @@ html {
     cursor:pointer;
     color: white;
 }
-#start1vsIA:hover, #start1vs1:hover {
+#start1vsIA:hover, #start1vs1:hover, #restartButton:hover {
     background-color: rgb(41, 26, 109);
     border: 1px solid rgb(0, 0, 0);
 }
