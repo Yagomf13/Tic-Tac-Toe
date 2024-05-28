@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Botón Start</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Tic Tac Toe</title>
 </head>
 <body>
-    <button id="start">Start</button>
-    <div id="turno">&nbsp;</div>
-    <div id="container">
-        <button id="button1" data-row="0" data-col="0">&nbsp;</button>
-        <button id="button2" data-row="0" data-col="1">&nbsp;</button>
-        <button id="button3" data-row="0" data-col="2">&nbsp;</button>
-        <button id="button4" data-row="1" data-col="0">&nbsp;</button>
-        <button id="button5" data-row="1" data-col="1">&nbsp;</button>
-        <button id="button6" data-row="1" data-col="2">&nbsp;</button>
-        <button id="button7" data-row="2" data-col="0">&nbsp;</button>    
-        <button id="button8" data-row="2" data-col="1">&nbsp;</button>
-        <button id="button9" data-row="2" data-col="2">&nbsp;</button>
+    <div id="headerContainer">
+        <header><h1 id="title">TIC TAC TOE</h1></header>
+        <button class="headerButton" id="start1vs1">1 vs 1</button>
+        <button class="headerButton" id="start1vsIA">1 vs IA</button>
+    </div>
+
+    <div id="container1vs1">
+        <div id="turno">&nbsp;</div>
+        <div id="container">
+            <button class="button" id="button1" data-row="0" data-col="0">&nbsp;</button>
+            <button class="button" id="button2" data-row="0" data-col="1">&nbsp;</button>
+            <button class="button" id="button3" data-row="0" data-col="2">&nbsp;</button>
+            <button class="button" id="button4" data-row="1" data-col="0">&nbsp;</button>
+            <button class="button" id="button5" data-row="1" data-col="1">&nbsp;</button>
+            <button class="button" id="button6" data-row="1" data-col="2">&nbsp;</button>
+            <button class="button" id="button7" data-row="2" data-col="0">&nbsp;</button>    
+            <button class="button" id="button8" data-row="2" data-col="1">&nbsp;</button>
+            <button class="button" id="button9" data-row="2" data-col="2">&nbsp;</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

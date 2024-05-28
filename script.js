@@ -1,8 +1,27 @@
-const startButton = document.getElementById("start");
+const start1vs1 = document.getElementById("start1vs1");
+const start1vsIA = document.getElementById("start1vsIA");
+
 const turno = document.getElementById("turno");
 
-const jugador1 = prompt("Introduce tu nombre jugador 1");
-const jugador2 = prompt("Introduce tu nombre jugador 2");
+let jugador1, jugador2; 
+function iniciarJuego() {
+    jugador1 = prompt("Introduce tu nombre jugador 1");
+    jugador2 = prompt("Introduce tu nombre jugador 2");
+
+    // Verificar si los nombres no son nulos o vacíos
+    if (jugador1 && jugador2) {
+        // Mostrar el tablero y establecer el turno del primer jugador
+        headerContainer.style.display = "none";
+        container1vs1.style.display = "block";
+        jugadores[0].nombre = jugador1;
+        jugadores[1].nombre = jugador2;
+    } else {
+        // Mostrar un mensaje de error si se cancela alguno de los prompts
+        alert("Por favor, introduce un nombre para ambos jugadores.");
+    }
+}
+
+start1vs1.addEventListener("click", iniciarJuego);
 
 const jugadores = [
     {
@@ -35,6 +54,51 @@ function playerSwitch(actualPlayer) {
     return actualPlayer;
 }
 
+function verificarGanador(tablero) {
+    // Verificar filas y columnas
+    for (let i = 0; i < 3; i++) {
+        // Verificar filas
+        if (tablero[i][0] === tablero[i][1] && tablero[i][1] === tablero[i][2]) {
+            if (tablero[i][0] !== 0) {
+                start1vs1.style.display = "block";
+                return `${currentPlayer.nombre} gana`;
+            }
+        }
+        // Verificar columnas
+        if (tablero[0][i] === tablero[1][i] && tablero[1][i] === tablero[2][i]) {
+            if (tablero[0][i] !== 0) {
+                start1vs1.style.display = "block";
+                return `${currentPlayer.nombre} gana`;
+            }
+        }
+    }
+
+    // Verificar diagonales
+    
+    // Diagonal principal
+    if (tablero[0][0] === tablero[1][1] && tablero[1][1] === tablero[2][2]) {
+        if (tablero[0][0] !== 0) {
+            start1vs1.style.display = "block";
+            return `${currentPlayer.nombre} gana`;
+        }
+    }
+    // Diagonal secundaria
+    if (tablero[0][2] === tablero[1][1] && tablero[1][1] === tablero[2][0]) {
+        if (tablero[0][2] !== 0) {
+            start1vs1.style.display = "block";
+            return `${currentPlayer.nombre} gana`;
+        }
+    } 
+
+    // Verificar si hay empate (tablero lleno sin ganador)
+    if (tablero.flat().every(cell => cell !== 0)) {
+        return 'Empate';
+    }
+    
+    // Si no hay ganador ni empate
+    return 'No hay ganador';
+}
+
 // Función para jugar un turno
 function play(button) {
     const row = button.dataset.row;
@@ -43,7 +107,14 @@ function play(button) {
     if (tablero[row][col] === 0) {
         tablero[row][col] = currentPlayer.numero;
         button.textContent = currentPlayer.numero === jugadores[0].numero ? 'X' : 'O';
-        currentPlayer = playerSwitch(currentPlayer);
+        
+        const resultado = verificarGanador(tablero);
+        if (resultado !== 'No hay ganador') {
+            turno.innerHTML = resultado;  
+            buttons.forEach(button => button.disabled = true); // Desactivar botones
+        } else {
+            currentPlayer = playerSwitch(currentPlayer);
+        }
     } else {
         alert("Espacio ocupado");
     }
@@ -51,10 +122,9 @@ function play(button) {
 }
 
 // Iniciar el juego al hacer clic en el botón Start
-startButton.addEventListener("click", () => {
+start1vs1.addEventListener("click", () => {
     currentPlayer = randomPlayer();
     turno.innerHTML = `Turno de ${currentPlayer.nombre}`;
-    startButton.disabled = true;
 });
 
 // Asignar event listeners a los botones del tablero
