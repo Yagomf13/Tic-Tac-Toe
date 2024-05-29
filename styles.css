@@ -43,7 +43,7 @@ html {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* Añade una sombra al texto */}
 
 .button {
-    padding: 40px;
+    padding: 6.5vh;
     margin: 0px;
     background-color: rgb(0, 0, 0);
     border: 1px solid rgb(41, 26, 109);
@@ -114,7 +114,7 @@ html {
     text-align: center;
     font-size: 50px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20%;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  
 }
@@ -128,10 +128,4 @@ html {
 }
 #container1vs1 {
     display: none;
-}
-#headerbutton {
-    z-index: 100;
-}
-#container {
-    z-index: 3;
 }

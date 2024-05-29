@@ -144,24 +144,34 @@ function play(button) {
 }
 
 function restartGame() {
+    // Reiniciar el tablero
     tablero = [
         [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]
     ];
+
+    // Elegir un jugador aleatoriamente
     currentPlayer = randomPlayer();
     turno.innerHTML = `Turno de ${currentPlayer.nombre}`;
+
+    // Restablecer los botones del tablero
     buttons.forEach(button => {
         button.innerHTML = '&nbsp;'; // Establecer el contenido como un carácter invisible
         button.disabled = false;
     });
-    restartButton.style.display= "none";
-    start1vs1.style.display= "block";
+
+    // Mostrar y ocultar los elementos necesarios
+    restartButton.style.display = "none";
     headerContainer.style.display = "none";
-    container1vs1.style.display = "block";
+    container1vs1.style.display = "block"; // Asegurar que el contenedor del tablero sea visible
+    container.style.display = "grid"; // Asegurar que el contenedor del tablero use el grid layout
 }
 
 restartButton.addEventListener("click", restartGame);
+
+
+
 
 // Iniciar el juego al hacer clic en el botón Start
 start1vs1.addEventListener("click", () => {
