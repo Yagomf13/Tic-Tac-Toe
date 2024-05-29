@@ -61,64 +61,49 @@ function verificarGanador(tablero) {
         // Verificar filas
         if (tablero[i][0] === tablero[i][1] && tablero[i][1] === tablero[i][2]) {
             if (tablero[i][0] !== 0) {
-                restartButton.style.display= "block"
-                start1vs1.style.display= "none"
-                headerContainer.style.display = "block";
-                container.style.display = "none";
-                title.style.display= "none"
+                setTimeout(endGame, 1000);
                 return `${currentPlayer.nombre} gana`;
             }
         }
         // Verificar columnas
         if (tablero[0][i] === tablero[1][i] && tablero[1][i] === tablero[2][i]) {
             if (tablero[0][i] !== 0) {
-                restartButton.style.display= "block"
-                start1vs1.style.display= "none"
-                headerContainer.style.display = "block";
-                container.style.display = "none";
-                title.style.display= "none"
+                setTimeout(endGame, 1000);
                 return `${currentPlayer.nombre} gana`;
             }
         }
     }
 
     // Verificar diagonales
-    
-    // Diagonal principal
     if (tablero[0][0] === tablero[1][1] && tablero[1][1] === tablero[2][2]) {
         if (tablero[0][0] !== 0) {
-            restartButton.style.display= "block"
-            start1vs1.style.display= "none"
-            headerContainer.style.display = "block";
-            container.style.display = "none";
-            title.style.display= "none"
+            setTimeout(endGame, 1000);
             return `${currentPlayer.nombre} gana`;
         }
     }
-    // Diagonal secundaria
     if (tablero[0][2] === tablero[1][1] && tablero[1][1] === tablero[2][0]) {
         if (tablero[0][2] !== 0) {
-            restartButton.style.display= "block"
-            start1vs1.style.display= "none"
-            headerContainer.style.display = "block";
-            container.style.display = "none";
-            title.style.display= "none"
+            setTimeout(endGame, 1000);
             return `${currentPlayer.nombre} gana`;
         }
-    } 
+    }
 
     // Verificar si hay empate (tablero lleno sin ganador)
     if (tablero.flat().every(cell => cell !== 0)) {
-        restartButton.style.display= "block"
-        start1vs1.style.display= "none"
-        headerContainer.style.display = "block";
-        container.style.display = "none";
-        title.style.display= "none"
+        setTimeout(endGame, 1000);
         return 'Empate';
     }
-    
+
     // Si no hay ganador ni empate
     return 'No hay ganador';
+}
+
+function endGame() {
+    restartButton.style.display = "block";
+    start1vs1.style.display = "none";
+    headerContainer.style.display = "block";
+    container.style.display = "none";
+    title.style.display = "none";
 }
 
 // Función para jugar un turno
@@ -169,9 +154,6 @@ function restartGame() {
 }
 
 restartButton.addEventListener("click", restartGame);
-
-
-
 
 // Iniciar el juego al hacer clic en el botón Start
 start1vs1.addEventListener("click", () => {
