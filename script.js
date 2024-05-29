@@ -1,6 +1,6 @@
 const start1vs1 = document.getElementById("start1vs1");
 const start1vsIA = document.getElementById("start1vsIA");
-const restartButton = document.getElementById("restartButton");
+const restartButton1vs1 = document.getElementById("restartButton1vs1");
 
 const turno = document.getElementById("turno");
 
@@ -111,7 +111,7 @@ function marcarGanador(casillas) {
 }
 
 function endGame() {
-    restartButton.style.display = "block";
+    restartButton1vs1.style.display = "block";
     start1vs1.style.display = "none";
     headerContainer.style.display = "block";
     container.style.display = "none";
@@ -161,13 +161,13 @@ function restartGame() {
     });
 
     // Mostrar y ocultar los elementos necesarios
-    restartButton.style.display = "none";
+    restartButton1vs1.style.display = "none";
     headerContainer.style.display = "none";
     container1vs1.style.display = "block"; // Asegurar que el contenedor del tablero sea visible
     container.style.display = "grid"; // Asegurar que el contenedor del tablero use el grid layout
 }
 
-restartButton.addEventListener("click", restartGame);
+restartButton1vs1.addEventListener("click", restartGame);
 
 // Iniciar el juego al hacer clic en el botón Start
 start1vs1.addEventListener("click", () => {
