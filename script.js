@@ -61,14 +61,16 @@ function verificarGanador(tablero) {
         // Verificar filas
         if (tablero[i][0] === tablero[i][1] && tablero[i][1] === tablero[i][2]) {
             if (tablero[i][0] !== 0) {
-                setTimeout(endGame, 1000);
+                marcarGanador([[i, 0], [i, 1], [i, 2]]);
+                setTimeout(endGame, 2000);
                 return `${currentPlayer.nombre} gana`;
             }
         }
         // Verificar columnas
         if (tablero[0][i] === tablero[1][i] && tablero[1][i] === tablero[2][i]) {
             if (tablero[0][i] !== 0) {
-                setTimeout(endGame, 1000);
+                marcarGanador([[0, i], [1, i], [2, i]]);
+                setTimeout(endGame, 2000);
                 return `${currentPlayer.nombre} gana`;
             }
         }
@@ -77,25 +79,35 @@ function verificarGanador(tablero) {
     // Verificar diagonales
     if (tablero[0][0] === tablero[1][1] && tablero[1][1] === tablero[2][2]) {
         if (tablero[0][0] !== 0) {
-            setTimeout(endGame, 1000);
+            marcarGanador([[0, 0], [1, 1], [2, 2]]);
+            setTimeout(endGame, 2000);
             return `${currentPlayer.nombre} gana`;
         }
     }
     if (tablero[0][2] === tablero[1][1] && tablero[1][1] === tablero[2][0]) {
         if (tablero[0][2] !== 0) {
-            setTimeout(endGame, 1000);
+            marcarGanador([[0, 2], [1, 1], [2, 0]]);
+            setTimeout(endGame, 2000);
             return `${currentPlayer.nombre} gana`;
         }
     }
 
     // Verificar si hay empate (tablero lleno sin ganador)
     if (tablero.flat().every(cell => cell !== 0)) {
-        setTimeout(endGame, 1000);
+        setTimeout(endGame, 2000);
         return 'Empate';
     }
 
     // Si no hay ganador ni empate
     return 'No hay ganador';
+}
+
+function marcarGanador(casillas) {
+    casillas.forEach(([row, col]) => {
+        const button = document.querySelector(`button[data-row='${row}'][data-col='${col}']`);
+        button.style.backgroundColor = "rgb(41, 26, 109)"; 
+        button.style.color = "red";
+    });
 }
 
 function endGame() {
@@ -143,7 +155,9 @@ function restartGame() {
     // Restablecer los botones del tablero
     buttons.forEach(button => {
         button.innerHTML = '&nbsp;'; // Establecer el contenido como un carácter invisible
+        button.style.backgroundColor = ""; // Restablecer el color de fondo
         button.disabled = false;
+        button.style.color = "white";
     });
 
     // Mostrar y ocultar los elementos necesarios
