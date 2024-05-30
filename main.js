@@ -59,19 +59,15 @@ function startGame(vsIA) {
     player1 = prompt("Introduce el Nombre del 1º Jugador: ");
     player2 = isVsIA ? "IA" : prompt("Introduce el Nombre del 2º Jugador: ");
 
-    //·········· Verificar si los nombres no son nulos o vacíos ··········//
-
-    if (player1 && player2) { //--> Mostrar el Tablero y establecer el turno del primer jugador <--//
-        headerContainer.style.display = "none";
-        container1vs1.style.display = "block";
+    //················ Verificar si los nombres no son nulos o vacíos ·················//
+    if (player1 && player2) {
         players[0].name = player1;
         players[1].name = player2;
-
-        // Initialize the game with new player names
         restartGame();
     } else {
-        alert("Por favor, introduce un nombre para ambos jugadores.");
+        alert("¡Por favor, introduce un nombre para ambos jugadores!");
     }
+    //·················································································//
 }
 
 //-------------------------------------------------------------------------------------//
@@ -91,7 +87,7 @@ function play(button) {
         button.textContent = currentPlayer.number === players[0].number ? 'X' : 'O';
         
         const resultado = verificarGanador(tablero);
-        if (resultado !== 'No hay ganador') {
+        if (resultado !== 'No Hay Ganador') {
             turno.innerHTML = resultado;  
             buttons.forEach(button => button.disabled = true);//-> Desactivar botones<-//
         } else {
@@ -120,7 +116,7 @@ function playIA() {
     button.textContent = 'O';//-------> Asume que la IA es siempre el jugador 2 (O) <--//
 
     const resultado = verificarGanador(tablero);
-    if (resultado !== 'No hay ganador') {
+    if (resultado !== 'No Hay Ganador') {
         turno.innerHTML = resultado;
         buttons.forEach(button => button.disabled = true);//----> Desactivar botones<--//
     } else {
@@ -130,23 +126,6 @@ function playIA() {
 
 //#####################################################################################//
 
-
-
-//------------------------ Cambiar el Turno Entre los Jugadores -----------------------//
-
-function playerSwitch(currentPlayer) {
-    currentPlayer = currentPlayer.number === players[0].number ? players[1] : players[0];
-    turno.innerHTML = `Turno de ${currentPlayer.name}`;
-    
-    if (isVsIA && currentPlayer.name === "IA") {
-        setTimeout(() => playIA(), 500); // Añade un pequeño retraso para simular el pensamiento de la IA
-    }
-
-    return currentPlayer;
-}
-
-//-------------------------------------------------------------------------------------//
-
 //---------------------------- Verificar Quien es el Ganador --------------------------//
 
 function verificarGanador(tablero) {
@@ -155,7 +134,9 @@ function verificarGanador(tablero) {
 
     for (let i = 0; i < 3; i++) {
 
-        if (tablero[i][0] === tablero[i][1] && tablero[i][1] === tablero[i][2]) { //----> Filas <----//
+        //================================ Filas ======================================//
+
+        if (tablero[i][0] === tablero[i][1] && tablero[i][1] === tablero[i][2]) {
             if (tablero[i][0] !== 0) {
                 markWinner([[i, 0], [i, 1], [i, 2]]);
                 isVsIA ? setTimeout(endGame1vsIA, 2000) : setTimeout(endGame1vs1, 2000);
@@ -163,7 +144,9 @@ function verificarGanador(tablero) {
             }
         }
 
-        if (tablero[0][i] === tablero[1][i] && tablero[1][i] === tablero[2][i]) { //--> Columnas <---//
+        //=============================== Columnas =====================================//
+
+        if (tablero[0][i] === tablero[1][i] && tablero[1][i] === tablero[2][i]) {
             if (tablero[0][i] !== 0) {
                 markWinner([[0, i], [1, i], [2, i]]);
                 isVsIA ? setTimeout(endGame1vsIA, 2000) : setTimeout(endGame1vs1, 2000);
@@ -171,69 +154,40 @@ function verificarGanador(tablero) {
             }
         }
     }
-
     //·················································································//
 
     //····························· Verificar Diagonales ······························//
 
-    if (tablero[0][0] === tablero[1][1] && tablero[1][1] === tablero[2][2]) { //--> D. Principal <---//
+    //============================== Diagonal Primaria ================================//
+
+    if (tablero[0][0] === tablero[1][1] && tablero[1][1] === tablero[2][2]) {
         if (tablero[0][0] !== 0) {
             markWinner([[0, 0], [1, 1], [2, 2]]);
             isVsIA ? setTimeout(endGame1vsIA, 2000) : setTimeout(endGame1vs1, 2000);
             return `${currentPlayer.name} gana`;
         }
     }
-    if (tablero[0][2] === tablero[1][1] && tablero[1][1] === tablero[2][0]) { //--> D. Secundária <--//
+    //============================== Diagonal Secundária ==============================//
+
+    if (tablero[0][2] === tablero[1][1] && tablero[1][1] === tablero[2][0]) { 
         if (tablero[0][2] !== 0) {
             markWinner([[0, 2], [1, 1], [2, 0]]);
             isVsIA ? setTimeout(endGame1vsIA, 2000) : setTimeout(endGame1vs1, 2000);
             return `${currentPlayer.name} gana`;
         }
     }
-
     //·················································································//
 
     //································ Verificar Empate ·······························//
-    
     if (tablero.flat().every(cell => cell !== 0)) {
         isVsIA ? setTimeout(endGame1vsIA, 2000) : setTimeout(endGame1vs1, 2000);
         return 'Empate';
     }
-
     //·················································································//
     
-    return 'No hay ganador'; //--> No Hay Ganador Ni Empate <--//
+    return 'No Hay Ganador'; //--------------------------> No Hay Ganador Ni Empate <--//
 }
 
 //-------------------------------------------------------------------------------------//
 
-
-//-------------------------------- Reiciando el Juego ---------------------------------//
-
-function restartGame() {
-    // Reiniciar el tablero
-    tablero = [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ];
-
-    // Restablecer los botones del tablero
-    buttons.forEach(button => {
-        button.innerHTML = '&nbsp;';    
-        button.style.backgroundColor = ""; 
-        button.disabled = false;
-        button.style.color = "white";
-    });
-
-    // Mostrar y ocultar los elementos necesarios
-    restartButton1vs1.style.display = "none";
-    headerContainer.style.display = "none";
-    container1vs1.style.display = "block"; // Asegurar que el contenedor del tablero sea visible
-    container.style.display = "grid"; // Asegurar que el contenedor del tablero use el grid layout
-
-    // Initialize the game
-    firstPlayer();
-}
-
-//-------------------------------------------------------------------------------------//
+//#####################################################################################//

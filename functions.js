@@ -20,7 +20,7 @@ function firstPlayer() {
     currentPlayer = randomPlayer();
     turno.innerHTML = `Turno de ${currentPlayer.name}`;
     if (isVsIA && currentPlayer.name === "IA") {
-        setTimeout(() => playIA(), 500); // IA haz el primer movimiento
+        setTimeout(() => playIA(), 500); //-----------> IA haz el primer movimiento <--//
     }
 }
 
@@ -78,4 +78,53 @@ function markWinner(cells) {
 
 //#####################################################################################//
 
+//------------------------ Cambiar el Turno Entre los Jugadores -----------------------//
 
+function playerSwitch(currentPlayer) {
+    currentPlayer = currentPlayer.number === players[0].number ? players[1] : players[0];
+    turno.innerHTML = `Turno de ${currentPlayer.name}`;
+    
+    if (isVsIA && currentPlayer.name === "IA") {
+        setTimeout(() => playIA(), 500);//--> Retraso simula el pensamiento de la IA <-//
+    }
+
+    return currentPlayer;
+}
+
+//-------------------------------------------------------------------------------------//
+
+//#####################################################################################//
+
+//---------------------------------- Reiciar el Juego ---------------------------------//
+
+function restartGame() {
+    //···························· Reiniciar el Tablero ·······························//
+    tablero = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ];
+    //·················································································//
+
+    //····················· Restablecer los Botones del Tablero ·······················//
+    buttons.forEach(button => {
+        button.innerHTML = '&nbsp;';    
+        button.style.backgroundColor = ""; 
+        button.disabled = false;
+        button.style.color = "white";
+    });
+    //·················································································//
+
+    //·························· Mostrar / Ocultar Elementos  ·························//
+    restartButton1vs1.style.display = "none";
+    headerContainer.style.display = "none";
+    container1vs1.style.display = "block";
+    container.style.display = "grid";
+    //·················································································//
+    
+    firstPlayer();
+}
+
+//-------------------------------------------------------------------------------------//
+
+//#####################################################################################//
