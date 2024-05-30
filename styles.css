@@ -136,7 +136,7 @@ html {
     cursor:pointer;
     color: white;
 }
-#start1vsIA:hover, #start1vs1:hover, #restartButton1vs1:hover {
+#start1vsIA:hover, #start1vs1:hover, #restartButton1vs1:hover, #restartButton1vsIA:hover {
     background-color: rgb(41, 26, 109);
     border: 1px solid rgb(0, 0, 0);
 }
