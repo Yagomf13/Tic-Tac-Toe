@@ -84,7 +84,7 @@ function play(button) {
 
     if (tablero[row][col] === 0) {
         tablero[row][col] = currentPlayer.number;
-        button.textContent = currentPlayer.number === players[0].number ? 'X' : 'O';
+        button.textContent = currentPlayer.number === players[0].number ? container1.querySelector('select').value : container2.querySelector('select').value;
         
         const resultado = verificarGanador(tablero);
         if (resultado !== 'No Hay Ganador') {
@@ -113,7 +113,7 @@ function playIA() {
 
     tablero[row][col] = currentPlayer.number;
     const button = document.querySelector(`button[data-row='${row}'][data-col='${col}']`);
-    button.textContent = 'O';//-------> Asume que la IA es siempre el jugador 2 (O) <--//
+    button.textContent = container2.querySelector('select').value;//-------> Asume que la IA es siempre el jugador 2 (O) <--//
 
     const resultado = verificarGanador(tablero);
     if (resultado !== 'No Hay Ganador') {

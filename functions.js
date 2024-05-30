@@ -48,6 +48,7 @@ function endGame1vs1() {
     start1vs1.style.display = "none";
     container.style.display = "none";
     title.style.display = "none";
+    emoji.style.display = "none";
 }
 
 function endGame1vsIA() {
@@ -58,6 +59,7 @@ function endGame1vsIA() {
     start1vs1.style.display = "block";
     container.style.display = "none";
     title.style.display = "none";
+    emoji.style.display = "none";
 }
 
 //-------------------------------------------------------------------------------------//
@@ -120,8 +122,9 @@ function restartGame() {
     headerContainer.style.display = "none";
     container1vs1.style.display = "block";
     container.style.display = "grid";
+    emoji.style.display = "none";
     //·················································································//
-    
+
     firstPlayer();
 }
 
