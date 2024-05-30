@@ -56,8 +56,8 @@ html {
     padding: 30px; 
     border-radius: 10px;
     margin-top: 20px;
-    padding-left: 45.5vh;
-    padding-right: 45.5vh;
+    padding-left: 20.5vW;
+    padding-right: 20.5vW;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -70,8 +70,8 @@ html {
     padding: 30px; 
     border-radius: 10px;
     margin-top: 20px;
-    padding-left: 44vh;
-    padding-right: 44vh;
+    padding-left: 20vw;
+    padding-right: 20vw;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -82,9 +82,9 @@ html {
     font-size: 16px;
     padding: 30px; 
     border-radius: 10px;
-    margin-top: 20px;
-    padding-left: 50vh;
-    padding-right: 50vh;
+    margin-top: 25vh;
+    padding-left: 17vw;
+    padding-right: 17vw;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -96,9 +96,9 @@ html {
     font-size: 16px;
     padding: 30px; 
     border-radius: 10px;
-    margin-top: 20px;
-    padding-left: 50vh;
-    padding-right: 50vh;
+    margin-top: 25vh;
+    padding-left: 17vw;
+    padding-right: 17vw;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -144,14 +144,14 @@ html {
 }
 #caracterPlayer1 {
     position: fixed;
-    top: 20%;
+    top: 35vh;
     left: 6%;
     width: 20%;
     color: white;
 }
 #caracterPlayer2 {
     position: fixed;
-    top: 20%;
+    top: 35vh;
     left: 80%;
     color: white;
 }
@@ -165,6 +165,8 @@ html {
     padding: 10px;
     width: 200px;
     font-size:larger;
+    text-align: center;
+    margin-left: 2.5vw;
 }
 .containeremoticono:hover {
     background-color: rgb(41, 26, 109);
