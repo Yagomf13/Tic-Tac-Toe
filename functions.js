@@ -6,7 +6,7 @@
 
 //---------------------- Escoger Aleatóriamente el Primer Jugador ---------------------//
 
-function randomPlayer() {
+function randomPlayer() {                                                                //! Función duplicada
     return players[Math.floor(Math.random() * 2)];
 }
 
@@ -30,7 +30,7 @@ function firstPlayer() {
 
 //---------------------- Escoger Aleatóriamente el Primer Jugador ---------------------//
 
-function randomPlayer() {
+function randomPlayer() {                                                                //! Función duplicada
     return players[Math.floor(Math.random() * 2)];
 }
 
@@ -83,7 +83,7 @@ function markWinner(cells) {
 //------------------------ Cambiar el Turno Entre los Jugadores -----------------------//
 
 function playerSwitch(currentPlayer) {
-    currentPlayer = currentPlayer.number === players[0].number ? players[1] : players[0];
+    currentPlayer = currentPlayer.number === players[0].number ? players[1] : players[0];             //?que ishto aa
     turno.innerHTML = `Turno de ${currentPlayer.name}`;
     
     if (isVsIA && currentPlayer.name === "IA") {

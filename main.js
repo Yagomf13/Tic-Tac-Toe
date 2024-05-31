@@ -106,7 +106,7 @@ start1vsIA.addEventListener("click", () => startGame(true));//-------> Start But
 
 function playIA() {
     let row, col;
-    do {
+    do {//-------> Repite el bucle hasta que el lugar esta vacio <--//
         row = Math.floor(Math.random() * 3);    
         col = Math.floor(Math.random() * 3);
     } while (tablero[row][col] !== 0);
