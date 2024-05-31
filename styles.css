@@ -56,8 +56,8 @@ html {
     padding: 30px; 
     border-radius: 10px;
     margin-top: 20px;
-    padding-left: 20.5vW;
-    padding-right: 20.5vW;
+    padding-left: 18.5vW;
+    padding-right: 18.5vW;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -70,8 +70,8 @@ html {
     padding: 30px; 
     border-radius: 10px;
     margin-top: 20px;
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 18vw;
+    padding-right: 18vw;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -83,8 +83,8 @@ html {
     padding: 30px; 
     border-radius: 10px;
     margin-top: 25vh;
-    padding-left: 17vw;
-    padding-right: 17vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -97,8 +97,8 @@ html {
     padding: 30px; 
     border-radius: 10px;
     margin-top: 25vh;
-    padding-left: 17vw;
-    padding-right: 17vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
     font-size: 35px;
     font-family:"PT Serif", serif;
     background-color: rgb(0, 0, 0);
@@ -163,7 +163,7 @@ html {
     color: white;
     border-radius: 10px; /* Bordes redondeados */
     padding: 10px;
-    width: 200px;
+    width: 10vw;
     font-size:larger;
     text-align: center;
     margin-left: 2.5vw;
